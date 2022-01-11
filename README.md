@@ -19,14 +19,13 @@ Use addStation to add new stations.
 
 JS:
 
-		const rtg = new RouteTrackingGenerator('canvas')
+	    const rtg = new RouteTrackingGenerator('canvas')
         rtg.addStation('source', 30, 30, 'source', 'demo source')
         rtg.addStation('destination', 400, 400, 'destination', 'demo destination')
         rtg.addStation('intermediate station1', 100, 100, 'intermediate', 'demo first intermediate station')
 
 The following HTML contains all necessary HTML for this library
 
-        <div/>
         <button id="demo">Show Animation For the whole route</button>
         <button id="animate">Show Animation for route progress</button><div/>
         <canvas id="canvas"></canvas> 
