@@ -4,7 +4,7 @@ A link to the landing page: https://route-tracking.herokuapp.com/
 
 # Get Started
 
-This is a front-end javascript library that helps develop for visualizing any kind of tracking from place to place such as parcel tracking, delivery tracking, or anything that related to it, including animation.
+This is a front-end JavaScript library that helps develop for visualizing any kind of tracking from place to place such as parcel tracking, delivery tracking, or anything that related to it, including animation.
 
 To set up RouteTracking.js, include the following codes to load in jQuery, javascript and css in your HTML.
 
