@@ -1,0 +1,48 @@
+.examples {
+	margin-top: 10%;
+	width: 120px;
+	height: 60px;
+	margin-right: 20px;
+	background-color: #d55f70;
+    font-variant: all-small-caps;
+    color: white;
+    font-size: 120%;
+    border-radius: 8px;
+}
+
+.documentation {
+	width: 180px;
+	height: 60px;
+	background-color: #5c47e1;
+    font-variant: all-small-caps;
+    color: white;
+    font-size: 120%;
+    border-radius: 8px;
+}
+
+.title {
+	margin-top: 8%;
+	font-size: 40px;
+	font-weight: bold;
+	font-family: "Garamond", Serif;
+}
+
+h3 {
+	margin-top: 12%;
+	font-size: 20px;
+	margin-left: 40px;
+	font-family: "Garamond", Serif;
+}
+
+/*backgroun align: https://css-tricks.com/perfect-full-page-background-image/*/
+/*image from: https://www.google.com/imgres?imgurl=https%3A%2F%2Fs17233.pcdn.co%2Fblog%2Fwp-content%2Fuploads%2F2021%2F03%2FMarketing_Tracking-Links_Site_0409.png&imgrefurl=https%3A%2F%2Fbitly.com%2Fblog%2Ftracking-link%2F&tbnid=mE9nBDwAoQBjSM&vet=12ahUKEwjHs8Sg_e30AhXqnnIEHYFrBN0QMygBegUIARDLAQ..i&docid=5biFvKTYSVuMhM&w=3200&h=1800&itg=1&q=tracking&hl=en-US&ved=2ahUKEwjHs8Sg_e30AhXqnnIEHYFrBN0QMygBegUIARDLAQ*/
+body {
+	background: url('Tracking.png') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: lightslategrey;
+    background-blend-mode: lighten;
+	text-align: center;
+}

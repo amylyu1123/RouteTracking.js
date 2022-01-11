@@ -1,0 +1,32 @@
+span {
+	font-weight: bold;
+}
+
+h2 {
+	position: relative;
+	font-family: "Lucida Console", monospace;
+	font-weight: bold;
+}
+
+.subtitle {
+	font-family: 'Monaco', monospace;
+	font-size: 30px;
+}
+
+h3:not(.subtitle) {
+	position: relative;
+	font-family: "Courier New", monospace;
+	text-decoration: underline;
+}
+
+p {
+	font-family: "Monaco", Monospace;
+	font-size: 20px;
+}
+
+pre {
+   font-family: "courier new", monospace;
+   font-size: 18px;
+   border:2px solid black
+   
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>APIs and Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="documentation.css">
+
+ </head>
+ <body>
+     <h2 class="title">APIs and Documentation For RouteTracking.js</h2>
+     <h3 class="subtitle">Getting Started</h3>
+     <p>This is a front-end javascript library that helps develop for visualizing any kind of tracking from place to place such as parcel tracking, delivery tracking, or anything that related to it, including animation.</p>
+     <p>To set up RouteTracking.js, include the following codes to load in jQuery, javascript and css in your HTML.</p>
+     <pre>
+
+         &lt;script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;&lt;/script&gt;
+         &lt;script defer type="text/javascript" src='js/RouteTracking.js'&gt;&lt;/script>
+         &lt;link rel="stylesheet" type="text/css" href="routeTracking.css"&gt;
+     </pre>
+
+     <p>Here is a code snippet of the basic functionality. <br>
+     We begin by initializing an object of RouteTrackingGenerator with canvas' id as parameter element you want to put the route on. <br>
+    Use addStation to add new stations.</p>
+    <span>JS</span>
+     <pre>
+
+        const rtg = new RouteTrackingGenerator('canvas')
+        rtg.addStation('source', 30, 30, 'source', 'demo source')
+        rtg.addStation('destination', 400, 400, 'destination', 'demo destination')
+        rtg.addStation('intermediate station1', 100, 100, 'intermediate', 'demo first intermediate station')
+     </pre>
+     <p>The following <span>HTML</span> contains all necessary HTML for this library</p>
+    <pre>
+
+        &lt;div/&gt;
+        &lt;button id="demo"&gt;Show Animation For the whole route&lt;/button&gt;
+        &lt;button id="animate"&gt;Show Animation for route progress&lt;/button&gt;&lt;div/&gt;
+        &lt;canvas id="canvas"&gt;&lt;/canvas&gt; 
+        &lt;div class="info"&gt;&lt;/div&gt;
+        &lt;div class="progress"&gt;&lt;/div&gt;
+    </pre>
+
+     <h3 class="subtitle">APIs</h3>
+     <p>All of the API methods are using the object 'rtg' we created above and call its function through prototype.</p>
+
+     <h3>changeMapSize(width, height)</h3>
+     <p>This method takes two integers as input to reset the canvas size as with canva's width as <span>width</span> and canva's height as <span>height</span>.
+     The default size of canvas is 800px, 500px. This method returns nothing.</p>
+
+     <h3>addStation(name, x, y, type, detail, position)</h3>
+     <p>This method allows to add a new station to the canvas as part of route. It takes the following parameters as input: <br>
+        the station's name, its x-coordinate, y-coordinate on the canvas, the station's type, its detail information, the position to be added)<br>
+
+        Note: the upper-left corner of canvas is (x = 0, y = 0)<br>
+        <span>type</span> can only be 'source'(source of the route), 'intermediate'(intermediate station of the route), 'destination'(destination of the route)<br>
+        <span>position</span> is the place to add this station, whether it is the first intermediate station, or other places. It will be only inluded when we are adding the current location(station type is 'current').<br>
+        The intermediate location will be created based on the order of calling addStation, and add only one source and one destination</p>
+        <pre>
+
+        const rtg = new RouteTrackingGenerator('canvas')
+        rtg.addStation('source', 30, 30, 'source', 'demo source')
+        rtg.addStation('destination', 400, 400, 'destination', 'demo destination')
+        rtg.addStation('intermediate station1', 100, 100, 'intermediate', 'demo first intermediate station')
+        rtg.addStation('intermediate station2', 700, 200, 'intermediate', 'demo second intermediate station')
+        rtg.addStation('intermediate station3', 500, 300, 'intermediate', 'demo third intermediate station')
+        </pre>
+        <p>This method returns nothing, but it will call other functions to show the route as long as more than one station has been created.</p>
+
+    <h3>addStationEvent(e)</h3>
+     <p>This method takes an event object as input to allow double clicking on the route/path or on anywhere on the canvas to add a new station or change an existing station's type. This method returns nothing.
+    Note: it only allows interchanging and adding intermediate station or current location. There will be only one current location for the whole route.<br>
+     You can double click on any existing intermediate station to change it to current location, or vice versa.
+    <br>If there is no current location added, if you double click on somewhere on the route, current location will be created there. If there exist a current location, double click on anywhere will all lead to a new intermediate station to be created to be the last one before destination.
+    <br>
+    Using the following code can accomplish those functionality.</p>
+    <pre>
+
+    document.querySelector("#canvas").addEventListener('dblclick', (e) =>rtg.addStationEvent(e))
+    </pre>
+
+    <h3>showAnimation(e)</h3>
+     <p>This method takes an event object as input to allow clicking on the specific button to show an animation of the whole route from source to destination.
+    <br>
+    Using the following codes can accomplish those functionality.</p>
+    <span>JS</span>
+    <pre>
+
+    document.querySelector("#demo").addEventListener('click', (e) =>rtg.showAnimation(e))
+    </pre>
+    <span>HTML</span>
+    <pre>
+
+    &lt;button id="demo"&gt;Show Animation For the whole route&lt;/button&gt;
+    </pre>
+
+    <h3>setCurrLoc(x, y)</h3>
+     <p>This method takes two integers as input to set the current location with x-coordinate as <span>x</span> and y-coordinate as <span>y</span> if current location does not exist. <br>
+        This method calls the next method findClosest to find if current location exists on this route next this <span>x, y</span>. If <span>x, y</span> is on the route, add the current location there. Otherwise, just add it at <span>x, y</span> It returns nothing. </p>
+
+    <h3>findClosest(x, y, type)</h3>
+     <p>This method takes two integers, and a string as input to find if <span>x, y</span> is on the route. If it is, and the type is 'current'(current location), add it to the route. Otherwise, add it to <span>x, y</span> by conneccting the last intermediate station to it and then to destination. <br>
+        If currnet location has been existed, add a intermediate station instead. This method returns nothing.</p>
+
+    <h3>getStationType(type, input)</h3>
+     <p>This method takes two inputs. It returns true if a station which has <span>type</span> as its type and it is not at position/order <span>input</span> of all the stations exist. Otherwise, returns false. It will be called in later method changeType</p>
+
+     <h3>getStations(x, y)</h3>
+     <p>This method takes two integers as inputs. It returns a list with length 2, where the first index contains the station which x-coordinate is <span>x</span> and y-coordinate is <span>y</span>, and the second index contains its next station if exist. Otherwise, its second index will be null.<br>
+      if there is no station at <span>x, y</span>, return [null, null]</p>
+
+      <h3>showPath(e)</h3>
+     <p>This method takes an event object as input to allow clicking on the specific button to show an animation of the route progress from source to destination.<br>
+        If the current location exists, it will also animates through there and changes color after that to indicate that the remaining route has not been arrived.<br>
+        Also, on the right of the canvas, some information(next station, passed station) about the route progress will show dynamically as the animation goes.<br>
+        This method returns nothing
+    <br>
+    Using the following codes can accomplish those functionality.</p>
+    <span>JS</span>
+    <pre>
+
+    document.querySelector("#animate").addEventListener('click', (e) => rtg.showPath(e))
+    </pre>
+    <span>HTML</span>
+    <pre>
+
+    &lt;button id="animate"&gt;Show Animation for route progress&lt;/button&gt;&lt;div/&gt;
+    </pre>
+
+    <h3>displayOnlyStation()</h3>
+     <p>This method takes no input and returns nothing. It allows the canvas to show only stations without the route.<p>
+
+    <h3>changeType(i)</h3>
+     <p>This method takes an integer index <span>i</span> as input and returns nothing. It will be used when double click on the station on canvas to change its type from current location to intermediate location or vice versa.<p>
+
+    <h3>showRoute()</h3>
+     <p>This method takes no input and returns nothing. It shows the route and stations together based on current setting.<p>
+
+    <h3 class="subtitle">The following 3 methods should always be used together when setting the event listener as they are doing a series of things to accomplish dragging and dropping station.</h3>
+    <h3>onDown(e)</h3>
+     <p>This method takes an event object as input to listen for the mouse to be pressed down. If the position of mouse when pressing down is at an existing station on canvas. It will store this station to be selected.
+    <br>
+    Using the following codes can accomplish those functionality.</p>
+    <span>JS</span>
+    <pre>
+
+    document.querySelector("#canvas").addEventListener('mousedown', (e) =>rtg.onDown(e))
+    </pre>
+
+    <h3>onUp(e)</h3>
+     <p>This method takes an event object as input to listen for the mouse to be release(pressed down before). It will move the station that was selected before when pressed down before to the position when the mouse releases.
+    <br>
+    Using the following codes can accomplish those functionality.</p>
+    <span>JS</span>
+    <pre>
+
+    document.querySelector("#canvas").addEventListener('mouseup', (e) =>rtg.onUp(e))
+    </pre>
+
+    <h3>onMove(e)</h3>
+     <p>This method takes an event object as input to listen when the mouse is moving everytime on canvas. If will set the new position of the previously selected station at the position the mouse is moving to. <br>
+        Also, this method allows showing detailed station information on the right of the canvas when the mouse is hovering at any of them.
+        <br>
+    Using the following codes can accomplish those functionality.</p>
+    <span>JS</span>
+    <pre>
+
+    document.querySelector("#canvas").addEventListener('mousemove', (e) => rtg.onMove(e))
+    </pre>
+
+ </body>
+
+</html>

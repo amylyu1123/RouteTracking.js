@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Route Tracking Library Examples</title>
+
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer type="text/javascript" src='js/RouteTracking.js'></script>
+    <script defer type="text/javascript" src='js/examples.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="examples.css">
+    <link rel="stylesheet" type="text/css" href="routeTracking.css">
+
+ </head>
+ <body>
+     <h2 class="title">Examples for RouteTracking.js</h2>
+     <div class="routeTracking">
+          <h3>Example 1: A route with <span style="color:blue">one source</span>, three intermediate stations, and <span style="color:red">one destination</span></h3>
+          <p>Hover over your mouse on any station to see details of stations in order on route on the right.</p>
+          <p>Note: the upper-left corner is (x = 0, y = 0)</p>
+          <p>Current Mouse Position: (x = NaN, y = NaN)</p>
+          <div>
+            <canvas id="example1" >
+            </canvas> 
+
+            <div class="info">
+            </div>  
+          </div>
+          <div class="clear"></div>
+          <div class="example-demo">
+          <div id="search">
+             <label for="tags1">Choose to see demo code: </label>
+
+             <select name="tags1" id="tags1">
+               <option value="JS" selected>JS</option>
+               <option value="HTML">HTML</option>
+               <option value="CSS">CSS</option>
+             </select>
+          </div>
+
+          <div id="displayCode1">
+          </div>
+
+          </div>
+     </div>
+
+     <div class="routeTracking">
+          <h3>Example 2: The same setting as before.</h3>
+          <p><span style="font-weight: bold;">Double Click</span> near the line(path) to add a <span style="color:rgb(142, 64, 202)">"current location" </span> or double click anywhere to add an intermediate station.</p>
+          <p><span style="font-weight: bold; color:red">Note: there can be only one current location.</span><br>
+          The intermediate location will be added as the last intermediate station before destination</p>
+          <p>Try to <span style="font-weight: bold;">drag and drop</span> any station to change its position.</p>
+          <p><span style="font-weight: bold;">Double Click</span> any intermediate station or current location to interchange their types.</p>
+          <p>Current Mouse Position: (x = NaN, y = NaN)</p>
+          <div>
+            <canvas id="example2" >
+            </canvas> 
+
+            <div class="info">
+            </div>  
+          </div>
+          <div class="clear"></div>
+          <div class="example-demo">
+               <div id="search">
+                  <label for="tags2">Choose to see demo code: </label>
+
+                  <select name="tags2" id="tags2">
+                    <option value="JS" selected>JS</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                  </select>
+               </div>
+
+               <div id="displayCode2">
+          </div>
+
+     </div>
+     </div>
+
+     <div class="routeTracking">
+          <h3>Example 3: The same setting as before.</h3>
+          <p>Click on to see animation for the route tracking:
+          <button id="demo">Show the whole route</button></p>
+          <p>Click on to see animation for the route progress: <button id="animate">Show route progress</button>
+          (check progress on the right)<br>Note: if a current location has been set up, the route from source to it would be <span style="color:rgb(142, 64, 202)">in purple</span>, and the remaining route will be in grey means that it has not been travelled yet.</p>
+          <p>Current Mouse Position: (x = NaN, y = NaN)</p>
+          <div>
+            <canvas id="example3" >
+            </canvas> 
+
+            <div class="info">
+            </div>
+
+            <div class="progress"></div>  
+          </div>
+          <div class="clear"></div>
+          <div class="example-demo">
+               <div id="search">
+                  <label for="tags3">Choose to see demo code: </label>
+
+                  <select name="tags3" id="tags3">
+                    <option value="JS" selected>JS</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                  </select>
+               </div>
+
+               <div id="displayCode3">
+          </div>
+     </div>
+
+ </body>
+
+</html>
