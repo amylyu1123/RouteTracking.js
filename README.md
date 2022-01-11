@@ -19,7 +19,7 @@ Use addStation to add new stations.
 
 JS:
 
-		const rtg = new RouteTrackingGenerator('canvas')
+	const rtg = new RouteTrackingGenerator('canvas')
         rtg.addStation('source', 30, 30, 'source', 'demo source')
         rtg.addStation('destination', 400, 400, 'destination', 'demo destination')
         rtg.addStation('intermediate station1', 100, 100, 'intermediate', 'demo first intermediate station')
