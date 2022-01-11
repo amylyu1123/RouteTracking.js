@@ -27,7 +27,7 @@ JS:
 The following HTML contains all necessary HTML for this library
 
         <button id="demo">Show Animation For the whole route</button>
-        <button id="animate">Show Animation for route progress</button><div/>
+        <button id="animate">Show Animation for route progress</button>
         <canvas id="canvas"></canvas> 
         <div class="info"></div>
         <div class="progress"></div>
